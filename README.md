@@ -9,6 +9,7 @@ Driver can take only fixed set of input.
 **************************************************************************************
 
 **Sample Input:**
+
     Enter area boundaries: 
     5E
     Type for battleship 1:

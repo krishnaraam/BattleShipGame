@@ -8,7 +8,7 @@ Driver Program will take command line inputs and produces output in standard out
 Driver can take only fixed set of input.
 **************************************************************************************
 
-**Sample Input:**
+**Sample Input For Driver:**
 
     Enter area boundaries: 
     5E

@@ -1,3 +1,6 @@
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,6 +10,8 @@ import javafx.util.Pair;
 
 import exception.IllegalInputException;
 import exception.ShipException;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import players.BattleShipWarrior;
 import players.Player;
@@ -16,7 +21,20 @@ import vessels.ShipFactory;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class BattleNegativeTest extends AbstractBattleTest{
+public class BattleNegativeTest {
+
+    private final OutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    @BeforeEach
+    public void setUpStream() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void resetStream() {
+        System.setOut(originalOut);
+    }
 
     @Test
     public void whenTwoShipsPositionedForPlayer1AreOverlapped_ExpectException() {

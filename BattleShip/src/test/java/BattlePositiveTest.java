@@ -1,10 +1,15 @@
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 import javafx.util.Pair;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import players.BattleShipWarrior;
 import players.Player;
@@ -15,7 +20,19 @@ import vessels.ShipType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BattlePositiveTest extends AbstractBattleTest {
+public class BattlePositiveTest {
+    private final OutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    @BeforeEach
+    public void setUpStream() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void resetStream() {
+        System.setOut(originalOut);
+    }
 
     @Test
     public void testPlayer1Wins_OverPlayer2() {

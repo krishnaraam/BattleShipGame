@@ -1,4 +1,4 @@
-# TargetAssignment
+# BattleShipGame
 
 *Please see the test cases to see the program functionality.
 For some reason test cases are not running successfully in maven.* 
